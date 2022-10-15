@@ -1,0 +1,8 @@
+Controle rouli :
+    - Servo moteur
+    - Gyro
+    - Arduino
+Camera 360° :
+    - Camera
+    - Moteur pas à pas
+    - Arduino
