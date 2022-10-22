@@ -1,5 +1,5 @@
 
-use <../elec-cartes/elec-cartes.scad>
+use <../library/elec-cartes/elec-cartes.scad>
 
 // création support minuterie 
 // diamètre fusex = 100mm dont 2mm d'épaisseur soit 98mm de diamètre intérieur
@@ -26,12 +26,12 @@ translate([300,0,80])
 
 translate ([305,0,80])
 rotate ([0,90,0])
-          sequenceur_1(){};
+          sequenceur();
 
 // intégration carte elec sur support minuterie
 translate ([5,O,190])
-rotate ((0,90,0))
-     sequenceur_1(){};
+rotate ([0,90,0])
+     sequenceur();
 
 
 
