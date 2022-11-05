@@ -56,17 +56,15 @@ for (i=[0:1:3]) {
 }
 // Bague de pousée
 color("grey")
-bague_de_poussee(d_ext, 97, 54.3, 2, 10);
-
+bague_de_poussee(d_ext, d_int, 54.3, 2, 10);
 // Bague milieu
 color("grey")
 translate ([0,0,162-5])
-bague_creuse(d_ext, 50, 10);
-
+bague_creuse(d_int, 50, 10);
 // Bague haut
 color("grey")
 translate ([0,0,225-5])
-bague_creuse(d_ext, 50, 10);
+bague_creuse(d_int, 50, 10);
 
 // Ailerons
 for (aileron = [0:1:3]) {

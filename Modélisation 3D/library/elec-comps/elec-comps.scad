@@ -9,7 +9,7 @@ module diode(d=5) {
     cylinder(d=d,h=d, $fn=100);
 }
 
-// // <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-comps/interrupteur.png">
+// <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-comps/interrupteur.png">
 
 module interrupteur(state="ON"){
     largeure  = 8;
