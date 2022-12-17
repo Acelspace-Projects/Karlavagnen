@@ -5,15 +5,38 @@ use <../library/meca-comps/meca-comps.scad>
 
 /*Persos*/
 use <../Tensionometre-Etienne/tensionometre.scad>
+use <../Camera-Dimitri/camera.scad>
+use <../Module_Vitesse-Dimitri/vitesse.scad>
+use <../Minuterie-Alexandre/minuterie.scad>
+use <../Mini_Ailerons-ClementL/roulis.scad>
 
 /*Variables*/
 d_ext=100;
 d_int=96;
 
-/*Tube*/
-translate([0,0,2]) 
-bague_creuse(d_ext, d_int, 2000);
+/*Camera*/
+translate([0,0,2000]) 
+bloc_camera(d_int);
 
+/*Ogive*/
+color([150/255,150/255,255/255,0.25]) 
+translate([0,0,2000])
+ogive(350, 100, 2);
+
+/*Module Vitesse*/
+translate([0,0,1700])
+vitesse();
+
+/*Tensionometre*/
+// tensionometre();
+
+/*Minuterie*/
+translate([0,0,800])
+minuterie(d_int);
+
+/*Roulis*/
+translate([0,0,1300]) 
+roulis(d_int);
 
 
 for (i=[0:1:3]) {
@@ -74,6 +97,11 @@ for (aileron = [0:1:3]) {
         color("grey")
         translate([-20,-1,0]) 
         cube(size=[20,2,300]);
-        aileron(300, 300, 145, 90, 2);
+        aileron(300, 150, 130, 75, 2);
     }
 }
+
+/*Tube*/
+color([150/255,150/255,150/255,0.5])
+translate([0,0,2]) 
+bague_creuse(d_ext, d_int, 2000);

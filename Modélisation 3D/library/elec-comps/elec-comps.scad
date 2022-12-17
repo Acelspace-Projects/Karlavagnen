@@ -73,32 +73,32 @@ module moteur_1(){
     translate([0, 0, 35+25+3])
     union(){
         color(c=[0.2,0.2,0.2,1])
-        bague_creuse(d_e=10, d_i=2, epaisseur=2, $fn=100);
+        bague_creuse(10, 2, 2);
         color("grey")
         cylinder(d=2, h=2);
     }
     
     color(c=[0.2,0.2,0.2,1])
     translate([0, 0, 35+25])
-    cylinder(d=28, h=3, $fn=100);
+    cylinder(d=28, h=3);
     
     color("DarkKhaki")
     translate([0, 0, 25])
-    cylinder(d=28, h=35, $fn=100);
+    cylinder(d=28, h=35);
     
     color("Gray")
     translate([0, 0, 0])
-    cylinder(d=32, h=25, $fn=100);
+    cylinder(d=32, h=25);
     
     rotate([0,0,90]) 
     translate([32/2-5-10/2, 0, -2])
     union() {
         color("Gray")
-        cylinder(d=10, h=2, $fn=50);
+        cylinder(d=10, h=2);
         color("lightGray")
         translate([0,0,-10])
         difference(){
-            cylinder(d=5, h=10, $fn=30);
+            cylinder(d=5, h=10);
             translate([0,5/2,2]) 
             cube(size=[6,5,12], center=true);
         }
