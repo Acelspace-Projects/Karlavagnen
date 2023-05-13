@@ -15,7 +15,7 @@ translate([0,0,200]) cylinder(h = 20, r1 = 50, r2 = 30, center = false);
 translate([0,0,202]) cylinder(h = 19.4, r1 = 35, r2 = 24.55, center = false);
 
 }
-//corps de la fusée 
+//corps de la fusée pd
 translate([0,0,0]) cylinder(h = 200, r1 = 50, r2 = 50, center = false);
 
 //batterie
