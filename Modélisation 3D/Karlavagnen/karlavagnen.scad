@@ -4,8 +4,9 @@ use <../library/elec-comps/elec-comps.scad>
 use <../library/meca-comps/meca-comps.scad>
 
 /*Persos*/
+use <../Ogive-Dimitri/ogive.scad>
+use <../Camera-Clement/camera.scad>
 use <../Tensionometre-Etienne/tensionometre.scad>
-use <../Camera-Dimitri/camera.scad>
 use <../Module_Vitesse-Dimitri/vitesse.scad>
 use <../Minuterie-Alexandre/minuterie.scad>
 use <../Mini_Ailerons-ClementL/roulis.scad>
@@ -13,15 +14,15 @@ use <../Mini_Ailerons-ClementL/roulis.scad>
 /*Variables*/
 d_ext=100;
 d_int=96;
-
-/*Camera*/
-translate([0,0,2000]) 
-bloc_camera(d_int);
+l_tube=2000;
 
 /*Ogive*/
-color([150/255,150/255,255/255,0.25]) 
-translate([0,0,2000])
-ogive(350, 100, 2);
+translate([0,0,l_tube])
+ogiveK(d_int);
+
+/*Camera*/
+translate([0,0,l_tube])
+bloc_camera(d_int);
 
 /*Module Vitesse*/
 translate([0,0,1700])
@@ -104,4 +105,4 @@ for (aileron = [0:1:3]) {
 /*Tube*/
 color([150/255,150/255,150/255,0.5])
 translate([0,0,2]) 
-bague_creuse(d_ext, d_int, 2000);
+bague_creuse(d_ext, d_int, l_tube);
