@@ -16,13 +16,14 @@ d_ext=100;
 d_int=96;
 l_tube=2000;
 
-/*Ogive*/
-translate([0,0,l_tube])
-ogiveK(d_int);
 
 /*Camera*/
-translate([0,0,l_tube])
+translate([0,0,l_tube+200])
 bloc_camera(d_int);
+
+/*Ogive*/
+translate([0,0,l_tube])
+ogiveK(d_ext);
 
 /*Module Vitesse*/
 translate([0,0,1700])
@@ -80,14 +81,15 @@ for (i=[0:1:3]) {
 }
 // Bague de pousée
 color("grey")
+translate ([0,0,-2])
 bague_de_poussee(d_ext, d_int, 54.3, 2, 10);
 // Bague milieu
 color("grey")
-translate ([0,0,162-5])
+translate ([0,0,160])
 bague_creuse(d_int, 50, 10);
 // Bague haut
 color("grey")
-translate ([0,0,225-5])
+translate ([0,0,225])
 bague_creuse(d_int, 50, 10);
 
 // Ailerons
@@ -104,5 +106,4 @@ for (aileron = [0:1:3]) {
 
 /*Tube*/
 color([150/255,150/255,150/255,0.5])
-translate([0,0,2]) 
 bague_creuse(d_ext, d_int, l_tube);
