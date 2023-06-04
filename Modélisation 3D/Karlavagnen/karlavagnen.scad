@@ -26,19 +26,23 @@ translate([0,0,l_tube])
 ogiveK(d_ext);
 
 /*Module Vitesse*/
-translate([0,0,1700])
+translate([0,0,1800])
 vitesse();
 
-/*Tensionometre*/
-// tensionometre();
+/*Roulis*/
+translate([0,0,1600]) 
+roulis(d_int);
+
+/*Trappe*/
+translate([0,0,1000]) 
+color("red") 
+cylinder(h=500,d=d_int);
 
 /*Minuterie*/
-translate([0,0,800])
+translate([0,0,500])
 minuterie(d_int);
-
-/*Roulis*/
-translate([0,0,1300]) 
-roulis(d_int);
+/*Tensionometre*/
+// tensionometre();
 
 
 for (i=[0:1:3]) {
