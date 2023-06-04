@@ -39,26 +39,30 @@ difference(){
 
 //servo-moteurs
 color([50/255,50/255,255/255]) {
-    translate([0,-10,17/2-27])
+    translate([0,-7,8.5-28])
     cube([8, 19, 17],true);
-    translate([0,0,17/2+20])
+    translate([23/2+10,0,17/2+5])
     rotate([0,0,90]) 
     cube([8, 19, 17],true);
 }
 
 //axe
-translate([0, 0, 51.7])
+translate([0, 0, -11])
 color("grey")
-cylinder(h = 7, r1 = 2, r2 = 2);
+cylinder(h=15,d=5);
 
 //pattes support caméra
-translate([23/2,0,0])
-cube([5, 9, 35]);
-translate([-23/2-5,0,0])
-cube([5, 9, 35]);
+union() {
+    translate([23/2,-10/2,4])
+    cube([5,10,35]);
+    translate([-23/2-5,-10/2,4])
+    cube([5,10,35]);
+    translate([-23/2-5,-10/2,4])
+    cube([33,10,5]);
+}
 
 //caméra
-translate([0,0,40]) {
+translate([0,0,15]) {
     translate([0,0,23/2])
     color("dimgrey") 
     cube(23,true);
