@@ -171,6 +171,26 @@ module ressort(diametre=10, section=1, hauteur=20, nb_spire=10){
     comp_spring([diametre, section, hauteur, nb_spire]);
 }
 
+// Retenue propu
+
+module retenuePropu() {
+    rotate([180,0,0]) 
+    translate([0,0,2]) {
+        color("grey") 
+        intersection() {
+            difference() {
+                cylinder(h=10,d=96);
+                translate([50,0,0]) 
+                cylinder(h=10,d=96);
+            }
+            translate([10,0,5]) 
+            cube([20,10,10],true);
+        }
+        translate([10,0,12.5]) 
+        cube([20,5,5],true);
+    }
+}
+
 // <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/meca-comps/tube.png">
 
 module tube(hauteur, diametre, epaisseur) {

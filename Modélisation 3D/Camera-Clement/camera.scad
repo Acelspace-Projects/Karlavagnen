@@ -28,7 +28,7 @@ module bloc_camera(d_int=96) {
 //     translate([-20,0,195]) cube([51, 34, 4]);
 // }
 
-//support
+// support
 translate([0, 0, -11])
 color("white")
 difference(){
@@ -37,7 +37,7 @@ difference(){
     cylinder(h=12,d=10);
 };
 
-//servo-moteurs
+// servo-moteurs
 color([50/255,50/255,255/255]) {
     translate([0,-7,8.5-28])
     cube([8, 19, 17],true);
@@ -46,12 +46,12 @@ color([50/255,50/255,255/255]) {
     cube([8, 19, 17],true);
 }
 
-//axe
+// axe
 translate([0, 0, -11])
 color("grey")
 cylinder(h=15,d=5);
 
-//pattes support caméra
+// pattes support caméra
 union() {
     translate([23/2,-10/2,4])
     cube([5,10,35]);
@@ -61,7 +61,7 @@ union() {
     cube([33,10,5]);
 }
 
-//caméra
+// caméra
 translate([0,0,15]) {
     translate([0,0,23/2])
     color("dimgrey") 
@@ -73,3 +73,5 @@ translate([0,0,15]) {
 }
 
 }
+
+bloc_camera();
