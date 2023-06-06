@@ -38,11 +38,15 @@ translate([0,0,1000])
 color("red") 
 cylinder(h=500,d=d_int);
 
-/*Minuterie*/
-translate([0,0,500])
-minuterie(d_int);
-/*Tensionometre*/
-// tensionometre();
+
+translate([0,0,500]) {
+    /*Minuterie*/
+    minuterie(d_int);
+    /*Tensionometre*/
+    scale([0.5,0.5,1]) 
+    translate([-50,0,10]) 
+    tensionometre();
+}
 
 
 for (i=[0:1:3]) {
@@ -107,6 +111,9 @@ for (aileron = [0:1:3]) {
         aileron(300, 150, 130, 75, 2);
     }
 }
+
+/*Tube*/
+retenuePropu();
 
 /*Tube*/
 color([150/255,150/255,150/255,0.5])
