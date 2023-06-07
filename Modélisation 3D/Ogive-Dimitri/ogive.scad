@@ -4,14 +4,15 @@ use <../library/meca-comps/meca-comps.scad>
 
 module ogiveK(d_ext=100) {
 
-//retrain
+// retrain
+color("dimgrey") 
 difference(){
     cylinder(h=200, d1=d_ext, d2=87);
     translate([0,0,-1])
     cylinder(h=202, d1=d_ext-6, d2=81);
 };
 
-//dome
+// dome
 color("white", 0.5)
 translate([0,0,200])
 union(){

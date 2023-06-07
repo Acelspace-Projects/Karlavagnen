@@ -1,69 +1,88 @@
-//
-// Mendel90
-//
-// GNU GPL v2
-// nop.head@gmail.com
-// hydraraptor.blogspot.com
-//
-// Springs
-//
+/*Global*/
+use <library/elec-cartes/elec-cartes.scad>
+use <library/elec-comps/elec-comps.scad>
+use <library/meca-comps/meca-comps.scad>
 
-// extruder_spring = [ 7,    1, 10, 5];
-// diametre, section, 
-extruder_spring = [ 2,    0.5, 10, 10];
-hob_spring      = [12, 0.75, 10, 6];
+/*Persos*/
+use <Ogive-Dimitri/ogive.scad>
+use <Camera-Clement/camera.scad>
+use <Tensionometre-Etienne/tensionometre.scad>
+use <Module_Vitesse-Dimitri/vitesse.scad>
+use <Minuterie-Alexandre/minuterie.scad>
+use <Mini_Ailerons-ClementL/roulis.scad>
 
-function spring_od(type)     = type[0];
-function spring_gauge(type)  = type[1];
-function spring_length(type) = type[2];
-function spring_coils(type)  = type[3];
+/*Variables*/
+d_ext=100;
+d_int=96;
+l_tube=2000;
 
-// taken from openscad example 20
-module coil(r1 = 100, r2 = 10, h = 100, twists)
-{
-    hr = h / (twists * 2);
-    stepsize = 1/16;
-    module segment(i1, i2) {
-        alpha1 = i1 * 360*r2/hr;
-        alpha2 = i2 * 360*r2/hr;
-        len1 = sin(acos(i1*2-1))*r2;
-        len2 = sin(acos(i2*2-1))*r2;
-        if (len1 < 0.01)
-            polygon([
-                [ cos(alpha1)*r1, sin(alpha1)*r1 ],
-                [ cos(alpha2)*(r1-len2), sin(alpha2)*(r1-len2) ],
-                [ cos(alpha2)*(r1+len2), sin(alpha2)*(r1+len2) ]
-            ]);
-        if (len2 < 0.01)
-            polygon([
-                [ cos(alpha1)*(r1+len1), sin(alpha1)*(r1+len1) ],
-                [ cos(alpha1)*(r1-len1), sin(alpha1)*(r1-len1) ],
-                [ cos(alpha2)*r1, sin(alpha2)*r1 ],
-            ]);
-        if (len1 >= 0.01 && len2 >= 0.01)
-            polygon([
-                [ cos(alpha1)*(r1+len1), sin(alpha1)*(r1+len1) ],
-                [ cos(alpha1)*(r1-len1), sin(alpha1)*(r1-len1) ],
-                [ cos(alpha2)*(r1-len2), sin(alpha2)*(r1-len2) ],
-                [ cos(alpha2)*(r1+len2), sin(alpha2)*(r1+len2) ]
-            ]);
+rotate([0,90,0]){ 
+/*Ogive*/
+translate([0,0,l_tube])
+ogiveK(d_ext);
+
+for (i=[0:1:3]) {
+    color("dimgrey") {
+    // equerres bague de pousée
+    rotate([0,0,90*i]) 
+    translate([1,-33,8]) 
+    rotate([90,0,0])
+    equerre(20, 20, 10, 1);
+
+    rotate([0,0,90*i]) 
+    translate([-33,1,8])
+    rotate([0,-90,0])
+    equerre(20, 20, 10, 1);
+
+    // equerres bague mileu
+    rotate([0,0,90*i]) 
+    translate([1,-33,170]) 
+    rotate([90,0,0])
+    equerre(20, 20, 10, 1);
+
+    rotate([0,0,90*i]) 
+    translate([-33,1,170])
+    rotate([0,-90,0])
+    equerre(20, 20, 10, 1);
+
+    // equerres bague haut
+    rotate([0,0,90*i]) 
+    translate([1,-33,235]) 
+    rotate([90,0,0])
+    equerre(20, 20, 10, 1);
+
+    rotate([0,0,90*i]) 
+    translate([-33,1,235])
+    rotate([0,-90,0])
+    equerre(20, 20, 10, 1);
     }
-    linear_extrude(height = h, twist = 180*h/hr,
-            $fn = (hr/r2)/stepsize, convexity = 5) {
-        for (i = [ stepsize : stepsize : 1+stepsize/2 ])
-            segment(i-stepsize, min(i, 1));
+}
+// Bague de pousée
+color("grey")
+translate ([0,0,-2])
+bague_de_poussee(d_ext, d_int, 54.3, 2, 10);
+// Bague milieu
+color("grey")
+translate ([0,0,160])
+bague_creuse(d_int, 50, 10);
+// Bague haut
+color("grey")
+translate ([0,0,225])
+bague_creuse(d_int, 50, 10);
+
+// Ailerons
+for (aileron = [0:1:3]) {
+    rotate([0,0,aileron*90])
+    translate([50,0,0])
+    union() {
+        color("grey")
+        translate([-20,-1,0]) 
+        cube(size=[20,2,300]);
+        aileron(300, 150, 130, 75, 2);
     }
 }
 
-
-module comp_spring(type, l = 0) {
-    l = (l == 0) ? spring_length(type) : l;
-
-    coil(r1 = (spring_od(type) - spring_gauge(type)) / 2, r2 = spring_gauge(type) / 2, h = l, twists = spring_coils(type));
-
-    if($children)
-        translate([0, 0, l])
-            children();
+/*Tube*/
+color([150/255,150/255,150/255])
+bague_creuse(d_ext, d_int, l_tube);
 }
-
-comp_spring(extruder_spring, 10);
