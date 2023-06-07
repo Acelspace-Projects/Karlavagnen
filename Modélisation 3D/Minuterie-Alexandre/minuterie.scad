@@ -14,9 +14,14 @@ color("white") {
 }
 
 // carte elec
-translate ([5,0,190])
+translate ([5,0,350])
 rotate ([90,0,90])
 sequenceur();
+
+// tableau de controle
+translate([4,-15,150]) 
+color("dimgrey") 
+equerre(h1 = 40, h2 = 30, l = 150, e = 2);
 
 }
 
