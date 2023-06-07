@@ -173,21 +173,43 @@ module ressort(diametre=10, section=1, hauteur=20, nb_spire=10){
 
 // Retenue propu
 
-module retenuePropu() {
+module retenuePropu(L=15, l=12.5) {
     rotate([180,0,0]) 
-    translate([0,0,2]) {
+    translate([25,0,2]) {
+        // plaque epaisse - 5mm
+        color("lightgrey") 
+        translate([L/2+2.5,0,2.5]) 
+        cube([L, l, 5],true);
+        // plaque U - 4mm
         color("grey") 
-        intersection() {
-            difference() {
-                cylinder(h=10,d=96);
-                translate([50,0,0]) 
-                cylinder(h=10,d=96);
-            }
-            translate([10,0,5]) 
-            cube([20,10,10],true);
+        difference() {
+            translate([L/2+2.5,0,7]) 
+            cube([L, l, 4],true);
+            translate([8,0,7.5]) 
+            cube([12, 5, 6],true);
         }
-        translate([10,0,12.5]) 
-        cube([20,5,5],true);
+        // pene
+        color("dimgray") 
+        translate([0,0,7]) 
+        difference() {
+            translate([5,0,0]) 
+            cube([12, 4, 4],true);
+            translate([-1,0,1]) 
+            rotate([0,45,0]) 
+            cube([5, 5, 10],true);
+        }
+        // plaque dessus - 1mm
+        color("lightgrey")
+        difference() {
+            translate([L/2+2.5,0,9.5]) 
+            cube([L, l, 1],true);
+            translate([9,0,9.5]) 
+            cube([7, 2.5, 2],true);
+        }
+        // vis
+        color("grey") 
+        translate([L/2+2.5,0,9])
+        cylinder(h=5,d=2);
     }
 }
 

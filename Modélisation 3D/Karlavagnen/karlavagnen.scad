@@ -50,42 +50,40 @@ translate([0,0,500]) {
 
 
 for (i=[0:1:3]) {
+    color("dimgrey") {
     // equerres bague de pousée
-    color("grey")
     rotate([0,0,90*i]) 
-    translate([1,-33,10]) 
+    translate([1,-33,8]) 
     rotate([90,0,0])
     equerre(20, 20, 10, 1);
 
-    color("grey")
     rotate([0,0,90*i]) 
-    translate([-33,1,10])
+    translate([-33,1,8])
     rotate([0,-90,0])
     equerre(20, 20, 10, 1);
+
     // equerres bague mileu
-    color("grey")
-    rotate([0,0,90*i])
-    translate([1,33,162-5])
-    rotate([-90,0,0])
+    rotate([0,0,90*i]) 
+    translate([1,-33,170]) 
+    rotate([90,0,0])
     equerre(20, 20, 10, 1);
 
-    color("grey")
-    rotate([0,0,90*i])
-    translate([1,-43,162-5]) 
-    rotate([-90,0,0])
+    rotate([0,0,90*i]) 
+    translate([-33,1,170])
+    rotate([0,-90,0])
     equerre(20, 20, 10, 1);
+
     // equerres bague haut
-    color("grey")
-    rotate([0,0,90*i])
-    translate([1,33,225-5])
-    rotate([-90,0,0])
+    rotate([0,0,90*i]) 
+    translate([1,-33,235]) 
+    rotate([90,0,0])
     equerre(20, 20, 10, 1);
 
-    color("grey")
-    rotate([0,0,90*i])
-    translate([1,-43,225-5]) 
-    rotate([-90,0,0])
+    rotate([0,0,90*i]) 
+    translate([-33,1,235])
+    rotate([0,-90,0])
     equerre(20, 20, 10, 1);
+    }
 }
 // Bague de pousée
 color("grey")
@@ -112,7 +110,7 @@ for (aileron = [0:1:3]) {
     }
 }
 
-/*Tube*/
+/*Systeme retenue propu*/
 retenuePropu();
 
 /*Tube*/
