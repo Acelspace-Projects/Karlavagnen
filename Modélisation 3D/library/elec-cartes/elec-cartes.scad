@@ -91,6 +91,24 @@ module arduino_uno(){
     cube(size=[18,2,10]);
 }
 
+// <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-cartes/arduino_nano.png">
+
+module arduino_nano(){
+    color("blue")
+    cube([43,18,2]);
+    // USB
+    color("grey")
+    translate([-3,4.5,2])
+    cube([9, 9, 3]);
+    // Pins
+    color([0.1,0.1,0.1]) {
+        translate([5,1,2])
+        cube([35, 1.5, 5]);
+        translate([5,15.5,2])
+        cube([35, 1.5, 5]);
+    }
+}
+
 // <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-cartes/sequenceur.png">
 
 module sequenceur(){

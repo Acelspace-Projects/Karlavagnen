@@ -13,9 +13,9 @@ color("white"){
 }
 
 // arduino
-translate([5,25,100])
+translate([5,0,100])
 rotate([0,90,0])
-arduino_uno();
+arduino_nano();
 
 // tube de pitot
 translate([55,0,0]) 
