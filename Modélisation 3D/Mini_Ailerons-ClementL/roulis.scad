@@ -3,6 +3,7 @@ include <lib-gear-dh.scad>
 include <lib-worm-dh.scad>
 use <../library/elec-comps/elec-comps.scad>
 use <../library/meca-comps/meca-comps.scad>
+use <../library/elec-cartes/elec-cartes.scad>
 
 module roulis(d_int=96,taille_plaque=130) {
 // support
@@ -13,14 +14,18 @@ color("white") {
     bague_pleine(d_int,10);
     // plaque
     translate([-15,0,taille_plaque/2+10]) 
-    cube([2,d_int,taille_plaque],center=true);
+    cube([6,d_int,taille_plaque],center=true);
 }
+
+// Arduino
+translate([-20,-25,100]) 
+rotate([180,90,0])
+arduino_uno();
 
 // moteur
 translate([6,0,50]) 
 rotate([0,0,90]) 
 moteur_1();
-
 
 // ensemble mecanique
 color("silver")

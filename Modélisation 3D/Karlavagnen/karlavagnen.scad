@@ -18,7 +18,7 @@ l_tube=2000;
 
 
 /*Camera*/
-translate([0,0,l_tube+200])
+translate([0,0,l_tube+150])
 bloc_camera(d_int);
 
 /*Ogive*/
