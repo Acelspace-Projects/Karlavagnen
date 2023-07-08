@@ -1,0 +1,6 @@
+Mesures vitesse:
+- installation pitot + venturi
+- code arduino pitot + venturi (+calib)
+
+Meca:
+- installation para
