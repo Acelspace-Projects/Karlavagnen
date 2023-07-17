@@ -14,6 +14,8 @@ void writeData() {
 
   #ifdef DEBUG
     if (dataFile) {
+      dataFile.print(millis());
+      dataFile.print("\t");
       dataFile.print(analogRead(ventPin));
       dataFile.print("\t");
       dataFile.println(analogRead(pitotPin));
@@ -22,12 +24,14 @@ void writeData() {
     else {
       Serial.println("ERROR: Failed to open DATA.TXT");
     }
-    Serial.print(angle);
+    Serial.print(millis());
     Serial.print("\t");
     Serial.print(analogRead(ventPin));
     Serial.print("\t");
     Serial.println(analogRead(pitotPin));
   #else
+    dataFile.print(millis());
+    dataFile.print("\t");
     dataFile.print(analogRead(ventPin));
     dataFile.print("\t");
     dataFile.println(analogRead(pitotPin));
@@ -43,7 +47,7 @@ void setup() {
 
   servo.attach(9);
   
-  SD.begin(4);
+  SD.begin(10);
 
   pinMode(ventPin, INPUT);
   pinMode(pitotPin, INPUT);
