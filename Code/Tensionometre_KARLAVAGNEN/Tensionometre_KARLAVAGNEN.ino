@@ -1,8 +1,18 @@
 #define DEBUG
 #define tensioPin A1
+#define DELAY_MESURE 200 // ms
 
+#include <Adafruit_BMP085.h>
 #include <SPI.h>
 #include <SD.h>
+
+Adafruit_BMP085 bmp;
+File dataFile;
+
+unsigned long prev_mes_t;
+unsigned long timestamp;
+int tensioVal;
+int pressVal;
 
 void setup() {
   #ifdef DEBUG
@@ -12,7 +22,11 @@ void setup() {
 
   SD.begin(10);
 
+  bmp.begin();
+
   pinMode(tensioPin, INPUT);
+
+  dataFile = SD.open("DATA.TXT", FILE_WRITE);
 
   #ifdef DEBUG
     Serial.println("Done!");
@@ -20,21 +34,36 @@ void setup() {
 }
 
 void loop() {
-  File dataFile = SD.open("DATA.TXT", FILE_WRITE);
+  timestamp = millis();
+  if ((timestamp - prev_mes_t) >= DELAY_MESURE){
+    tensioVal = analogRead(tensioPin);
+    pressVal = bmp.readPressure();
 
-  #ifdef DEBUG
-    if (dataFile) {
-      dataFile.println(analogRead(tensioPin));
-      dataFile.close();
-    }
-    else {
-      Serial.println("ERROR: Failed to open DATA.TXT");
-    }
-    Serial.println(analogRead(tensioPin));
-  #else
-    dataFile.print(analogRead(tensioPin));
-    dataFile.close();
-  #endif
-  
-  delay(200);
+    #ifdef DEBUG
+      if (dataFile) {
+        dataFile.print(timestamp);
+        dataFile.print("\t");
+        dataFile.print(tensioVal);
+        dataFile.print("\t");
+        dataFile.println(pressVal);
+        dataFile.flush();
+      }
+      else {
+        Serial.println("ERROR: Failed to open DATA.TXT");
+      }
+      Serial.print(timestamp);
+      Serial.print("\t");
+      Serial.print(tensioVal);
+      Serial.print("\t");
+      Serial.println(pressVal);
+    #else
+      dataFile.print(timestamp);
+      dataFile.print("\t");
+      dataFile.print(tensioVal);
+      dataFile.print("\t");
+      dataFile.println(pressVal);
+      dataFile.flush();
+    #endif
+    prev_mes_t = timestamp;
+  }
 }

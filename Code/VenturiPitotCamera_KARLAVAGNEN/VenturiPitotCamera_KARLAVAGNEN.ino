@@ -9,9 +9,9 @@
 Servo servo;
 int angle = 0;
 
-void writeData() {
-  File dataFile = SD.open("DATA.TXT", FILE_WRITE);
+File dataFile;
 
+void writeData() {
   #ifdef DEBUG
     if (dataFile) {
       dataFile.print(millis());
@@ -19,7 +19,7 @@ void writeData() {
       dataFile.print(analogRead(ventPin));
       dataFile.print("\t");
       dataFile.println(analogRead(pitotPin));
-      dataFile.close();
+      dataFile.flush();
     }
     else {
       Serial.println("ERROR: Failed to open DATA.TXT");
@@ -35,7 +35,7 @@ void writeData() {
     dataFile.print(analogRead(ventPin));
     dataFile.print("\t");
     dataFile.println(analogRead(pitotPin));
-    dataFile.close();
+    dataFile.flush();
   #endif
 }
 
@@ -51,6 +51,8 @@ void setup() {
 
   pinMode(ventPin, INPUT);
   pinMode(pitotPin, INPUT);
+
+  dataFile = SD.open("DATA.TXT", FILE_WRITE);
 
   #ifdef DEBUG
     Serial.println("Done!");
