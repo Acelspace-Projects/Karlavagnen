@@ -1,6 +1,6 @@
 #define DEBUG
 #define tensioPin A1
-#define DELAY_MESURE 200 // ms
+#define DELAY_MESURE 50 // ms
 
 #include <Adafruit_BMP085.h>
 #include <SPI.h>
@@ -16,7 +16,7 @@ int pressVal;
 
 void setup() {
   #ifdef DEBUG
-    Serial.begin(9600);
+    Serial.begin(115200);
     Serial.println("Initialising...");
   #endif
 

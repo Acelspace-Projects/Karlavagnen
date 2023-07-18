@@ -1,6 +1,8 @@
 #define DEBUG
 #define ventPin A0
 #define pitotPin A1
+#define DELAY_MESURE 100 // ms
+#define DELAY_SERVO   10 // ms
 
 #include <Servo.h>
 #include <SPI.h>
@@ -9,33 +11,33 @@
 Servo servo;
 int angle = 0;
 
+#define ROTATION_POSITIVE true
+#define ROTATION_NEGATIVE false
+bool servo_sens = ROTATION_POSITIVE;
+
 File dataFile;
 
-void writeData() {
+unsigned long prev_mes_t    = 0;
+unsigned long timestamp_mes = 0;
+int tensioVal               = 0;
+int pressVal                = 0;
+
+unsigned long prev_servo_t;
+unsigned long timestamp_servo;
+
+void writeData(unsigned long timestamp, int pito, int venturi) {
+  dataFile.print(timestamp);
+  dataFile.print("\t");
+  dataFile.print(venturi);
+  dataFile.print("\t");
+  dataFile.println(pito);
+  dataFile.flush();
   #ifdef DEBUG
-    if (dataFile) {
-      dataFile.print(millis());
-      dataFile.print("\t");
-      dataFile.print(analogRead(ventPin));
-      dataFile.print("\t");
-      dataFile.println(analogRead(pitotPin));
-      dataFile.flush();
-    }
-    else {
-      Serial.println("ERROR: Failed to open DATA.TXT");
-    }
-    Serial.print(millis());
+    Serial.print(timestamp);
     Serial.print("\t");
-    Serial.print(analogRead(ventPin));
+    Serial.print(venturi);
     Serial.print("\t");
-    Serial.println(analogRead(pitotPin));
-  #else
-    dataFile.print(millis());
-    dataFile.print("\t");
-    dataFile.print(analogRead(ventPin));
-    dataFile.print("\t");
-    dataFile.println(analogRead(pitotPin));
-    dataFile.flush();
+    Serial.println(pito);
   #endif
 }
 
@@ -60,21 +62,24 @@ void setup() {
 }
 
 void loop() {
-  // Aller
-  for (angle = 0; angle <= 180; angle += 1) {
-    servo.write(angle);
-    writeData();
-    delay(10);
+  timestamp_mes = millis();
+  // Mesure pito & venturi
+  if ((timestamp_mes - prev_mes_t) >= DELAY_MESURE){
+    val_venturi = analogRead(ventPin);
+    val_pito    = analogRead(pitotPin);
+    writeData(timestamp_mes, val_venturi, val_pito);
+    prev_mes_t = timestamp_mes;
   }
-  // Retour
-  for (angle = 180; angle >= 0; angle -= 1) {
+  timestamp_servo = timestamp_mes;
+  if ((timestamp_servo - prev_servo_t) >= DELAY_SERVO){
     servo.write(angle);
-    writeData();
-    delay(10);
-  }
-  // Delai
-  for (angle = 0; angle <= 30; angle += 1) {
-    writeData();
-    delay(10);
+    if (angle == 180)
+      servo_sens = ROTATION_NEGATIVE;
+    else if (angle == 0)
+      servo_sens = ROTATION_POSITIVE;
+    if (servo_sens == ROTATION_POSITIVE)
+      angle++;
+    else
+      angle--;
   }
 }
