@@ -2,7 +2,7 @@
 #define ventPin A0
 #define pitotPin A1
 #define DELAY_MESURE 100 // ms
-#define DELAY_SERVO   10 // ms
+#define DELAY_SERVO   25 // ms
 
 #include <Servo.h>
 #include <SPI.h>
@@ -19,8 +19,8 @@ File dataFile;
 
 unsigned long prev_mes_t    = 0;
 unsigned long timestamp_mes = 0;
-int tensioVal               = 0;
-int pressVal                = 0;
+int val_venturi             = 0;
+int val_pito                = 0;
 
 unsigned long prev_servo_t;
 unsigned long timestamp_servo;
@@ -81,5 +81,6 @@ void loop() {
       angle++;
     else
       angle--;
+    prev_servo_t = timestamp_servo;
   }
 }
