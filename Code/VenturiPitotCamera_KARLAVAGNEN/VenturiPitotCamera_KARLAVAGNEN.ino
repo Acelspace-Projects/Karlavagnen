@@ -1,4 +1,4 @@
-#define DEBUG
+// #define DEBUG
 #define ventPin A0
 #define pitotPin A1
 #define DELAY_MESURE 100 // ms
