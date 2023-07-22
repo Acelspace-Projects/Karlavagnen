@@ -1,62 +1,69 @@
-#include "FastIMU.h"
-#include <Wire.h>
+#define DEBUG
+#define tensioPin A1
+#define DELAY_MESURE 50 // ms
 
-#define PERFORM_CALIBRATION //Comment to disable startup calibration
-BMI160 IMU;
+#include <Adafruit_BMP085.h>
+#include <SPI.h>
+#include <SD.h>
 
-calData calib = { 0 };  //Calibration data
-AccelData accelData;
-GyroData gyroData;
+Adafruit_BMP085 bmp;
+File dataFile;
+
+unsigned long prev_mes_t;
+unsigned long timestamp;
+int tensioVal;
+int pressVal;
 
 void setup() {
-  Wire.begin();
-  Wire.setClock(400000); //400khz clock
-  Serial.begin(115200);
-  while (!Serial) {}
-  
-  #ifdef PERFORM_CALIBRATION
-  Serial.println("Keep IMU level.");
-  delay(1000);
-  IMU.calibrateAccelGyro(&calib);
-  Serial.println("Calibration done!");
-  Serial.println("Accel biases X/Y/Z: ");
-  Serial.print(calib.accelBias[0]);
-  Serial.print(", ");
-  Serial.print(calib.accelBias[1]);
-  Serial.print(", ");
-  Serial.println(calib.accelBias[2]);
-  Serial.println("Gyro biases X/Y/Z: ");
-  Serial.print(calib.gyroBias[0]);
-  Serial.print(", ");
-  Serial.print(calib.gyroBias[1]);
-  Serial.print(", ");
-  Serial.println(calib.gyroBias[2]);
-  delay(1000);
+  #ifdef DEBUG
+    Serial.begin(115200);
+    Serial.println("Initialising...");
   #endif
 
-  IMU.init(calib, 0x68);
+  SD.begin(10);
 
-  //err = IMU.setGyroRange(500);      //USE THESE TO SET THE RANGE, IF AN INVALID RANGE IS SET IT WILL RETURN -1
-  //err = IMU.setAccelRange(2);       //THESE TWO SET THE GYRO RANGE TO ±500 DPS AND THE ACCELEROMETER RANGE TO ±2g
+  bmp.begin();
 
+  pinMode(tensioPin, INPUT);
+
+  dataFile = SD.open("DATA.TXT", FILE_WRITE);
+
+  #ifdef DEBUG
+    Serial.println("Done!");
+  #endif
 }
 
 void loop() {
-  IMU.update();
-  IMU.getAccel(&accelData);
-  Serial.print(accelData.accelX);
-  Serial.print("\t");
-  Serial.print(accelData.accelY);
-  Serial.print("\t");
-  Serial.print(accelData.accelZ);
-  Serial.print("\t");
-  IMU.getGyro(&gyroData);
-  Serial.print(gyroData.gyroX);
-  Serial.print("\t");
-  Serial.print(gyroData.gyroY);
-  Serial.print("\t");
-  Serial.print(gyroData.gyroZ);
-  Serial.print("\t");
-  Serial.println(IMU.getTemp());
-  delay(50);
+  timestamp = millis();
+  if ((timestamp - prev_mes_t) >= DELAY_MESURE){
+    tensioVal = analogRead(tensioPin);
+    pressVal = bmp.readPressure();
+
+    #ifdef DEBUG
+      if (dataFile) {
+        dataFile.print(timestamp);
+        dataFile.print("\t");
+        dataFile.print(tensioVal);
+        dataFile.print("\t");
+        dataFile.println(pressVal);
+        dataFile.flush();
+      }
+      else {
+        Serial.println("ERROR: Failed to open DATA.TXT");
+      }
+      Serial.print(timestamp);
+      Serial.print("\t");
+      Serial.print(tensioVal);
+      Serial.print("\t");
+      Serial.println(pressVal);
+    #else
+      dataFile.print(timestamp);
+      dataFile.print("\t");
+      dataFile.print(tensioVal);
+      dataFile.print("\t");
+      dataFile.println(pressVal);
+      dataFile.flush();
+    #endif
+    prev_mes_t = timestamp;
+  }
 }
