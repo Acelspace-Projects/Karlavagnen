@@ -19,7 +19,10 @@
 
 ---
 
-### Experiences
+### Description
 Karlavagnen embarquait en 2023 une expérience de mesure de tension sur les sangles du parachute, deux mesures de vitesse (pitot et venturi), une mesure d'altitude (BMP180), une carte de prise de mesures et de télémesure CATS systems ainsi qu'une caméra intégrée à l'ogive.
 
 ### Liens
+- [StabTraj](https://github.com/Acelspace-Projects/Karlavagnen/blob/main/Documentation/StabTraj/ST-(StabTraj)_KARLAVAGNEN.xlsx)
+- [Dossier de définition](https://github.com/Acelspace-Projects/Karlavagnen/blob/main/Documentation/DossierDeDefinition/DDD_KARLAVAGNEN.pdf)
+- [Dossier technique](https://github.com/Acelspace-Projects/Karlavagnen/blob/main/Documentation/DossierTechnique/DT_KARLAVAGNEN.pdf)
