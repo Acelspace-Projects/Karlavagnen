@@ -1,5 +1,5 @@
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/aileron.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/aileron.png">
 
 module aileron(m, n, E, p, epaisseur) {
     CubePoints = [
@@ -25,7 +25,7 @@ module aileron(m, n, E, p, epaisseur) {
     translate([0,epaisseur/2,0]) rotate(a=[90,0,0]) color("grey") polyhedron( CubePoints, CubeFaces );
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/bague_creuse.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/bague_creuse.png">
 
 module bague_creuse(diametre_externe, diametre_interieur, epaisseur) {
     assert(diametre_externe > diametre_interieur, "Le diametre extérieur doit être plus grand que diametre intérieur")
@@ -35,7 +35,7 @@ module bague_creuse(diametre_externe, diametre_interieur, epaisseur) {
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/bague_de_poussee.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/bague_de_poussee.png">
 
 module bague_de_poussee(
     diametre_exterieur,
@@ -50,13 +50,13 @@ module bague_de_poussee(
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/bague_pleine.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/bague_pleine.png">
 
 module bague_pleine(diametre, epaisseur) {
     cylinder(h=epaisseur, d=diametre);
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/equerre.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/equerre.png">
 
 module equerre(h1, h2, l, e){
     union() {
@@ -65,7 +65,7 @@ module equerre(h1, h2, l, e){
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/guide_rampe.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/guide_rampe.png">
 
 module guide_rampe() {
     rotate([-90,0,0]) color("grey") union() {
@@ -75,7 +75,7 @@ module guide_rampe() {
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/ogive.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/ogive.png">
 
 module ogive(hauteur, diametre, epaisseur) {
     difference() {
@@ -84,7 +84,7 @@ module ogive(hauteur, diametre, epaisseur) {
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/ogive_pleine.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/ogive_pleine.png">
 
 module ogive_pleine(hauteur, diametre) {
     h_o = hauteur;
@@ -99,7 +99,7 @@ module ogive_pleine(hauteur, diametre) {
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/ressort.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/ressort.png">
 
 module ressort(diametre=10, section=1, hauteur=20, nb_spire=10){
     //
@@ -213,7 +213,7 @@ module retenuePropu(L=15, l=12.5) {
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/meca-comps/tube.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/meca-comps/tube.png">
 
 module tube(hauteur, diametre, epaisseur) {
     difference() {

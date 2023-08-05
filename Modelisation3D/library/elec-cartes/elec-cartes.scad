@@ -2,7 +2,7 @@
 use <../elec-comps/elec-comps.scad>
 use <../meca-comps/meca-comps.scad>
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-cartes/arduino_uno.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/elec-cartes/arduino_uno.png">
 
 module arduino_uno(){
     color("blue")
@@ -91,7 +91,7 @@ module arduino_uno(){
     cube(size=[18,2,10]);
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-cartes/arduino_nano.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/elec-cartes/arduino_nano.png">
 
 module arduino_nano(){
     color("blue")
@@ -109,7 +109,7 @@ module arduino_nano(){
     }
 }
 
-// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-cartes/sequenceur.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/OpenSCAD/library/elec-cartes/sequenceur.png">
 
 module sequenceur(){
     epaisseur_carte = 1.5;
