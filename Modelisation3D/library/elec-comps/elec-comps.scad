@@ -1,7 +1,7 @@
 
 use <../meca-comps/meca-comps.scad>
 
-// <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-comps/diode.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-comps/diode.png">
 
 module diode(d=5) {
     translate([0,0,d]) 
@@ -9,7 +9,7 @@ module diode(d=5) {
     cylinder(d=d,h=d, $fn=100);
 }
 
-// <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-comps/interrupteur.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-comps/interrupteur.png">
 
 module interrupteur(state="ON"){
     largeure  = 8;
@@ -59,7 +59,7 @@ module interrupteur(state="ON"){
     }
 }
 
-// <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-comps/moteur.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-comps/moteur.png">
 
 module moteur_1(){
     for (i=[0:1:1]) {
@@ -105,7 +105,7 @@ module moteur_1(){
     }
 }
 
-// <img src="file:///G:/Mon%20Drive/Cspace%202023%20-%20Karlavagnen/Mod%C3%A9lisation%203D/library/elec-comps/pile_9V.png">
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/e1d3973b31a420a928e72ec3de8335cd05c33cb1/OpenSCAD/library/elec-comps/pile_9V.png">
 
 module pile_9V(){
     l = 25;

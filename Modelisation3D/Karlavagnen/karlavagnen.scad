@@ -7,7 +7,7 @@ use <../library/meca-comps/meca-comps.scad>
 use <../Ogive-Dimitri/ogive.scad>
 use <../Camera-Clement/camera.scad>
 use <../Tensionometre-Etienne/tensionometre.scad>
-// use <../Module_Vitesse-Dimitri/vitesse.scad>
+use <../Module_Vitesse-Dimitri/vitesse.scad>
 use <../Module_Vitesse-Dimitri/blocs.scad>
 use <../Minuterie-Alexandre/minuterie.scad>
 use <../Mini_Ailerons-ClementL/roulis.scad>
@@ -27,8 +27,8 @@ translate([0,0,l_tube])
 ogiveK(d_ext);
 
 /*Module Vitesse*/
-// translate([0,0,1800])
-// vitesse();
+translate([0,0,1800])
+vitesse();
 
 /*Roulis*/
 // translate([0,0,1600]) 

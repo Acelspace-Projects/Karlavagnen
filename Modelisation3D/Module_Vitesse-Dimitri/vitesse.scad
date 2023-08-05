@@ -2,26 +2,28 @@
 use <../library/elec-cartes/elec-cartes.scad>
 use <../library/meca-comps/meca-comps.scad>
 
-module vitesse(d_int=96,taille_plaque=130){
+module vitesse(d_int=96,taille_plaque=146){
 // support
 color("white"){
     bague_pleine(d_int,20);
     translate([-5,-d_int/2,20])
     cube([10,d_int,taille_plaque]);
-    translate([0,0,20+taille_plaque])
-    bague_pleine(d_int,20);
+    difference(){
+        translate([0,0,20+taille_plaque]) bague_pleine(84,20);
+        translate([-26, -5, 166]) cube(size = [21,35, 21]);
+    }
+   
 }
 
 // arduino
-translate([5,0,100])
-rotate([0,90,0])
-arduino_nano();
+translate([6,35,110])
+rotate([-90,0,-90])
+arduino_uno();
 
-// tube de pitot
-translate([55,0,0]) 
-bague_creuse(10,8,150);
-translate([-55,0,0]) 
-bague_creuse(10,8,150);
+// CATS Vega
+translate([-9, -5, 90])
+rotate([0, 270, 0])
+CATS_Vega();
 
 }
 
