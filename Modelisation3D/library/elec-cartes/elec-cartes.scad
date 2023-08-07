@@ -94,6 +94,7 @@ module arduino_uno(){
 // <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/main/OpenSCAD/library/elec-cartes/arduino_nano.png">
 
 module arduino_nano(){
+    // platine bleue
     color("blue")
     cube([43,18,2]);
     // USB
@@ -106,6 +107,35 @@ module arduino_nano(){
         cube([35, 1.5, 5]);
         translate([5,15.5,2])
         cube([35, 1.5, 5]);
+    }
+}
+
+// <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/main/OpenSCAD/library/elec-cartes/cats_vega.png">
+
+module cats_vega(){
+            //module CATS
+    // platine noire
+    color([25/255,20/255,54/255]) translate([0, 0, 0]) cube(size = [100, 33, 2.1]);
+    color([142/255,141/255,145/255]) translate([60, 4, 2.1]) cube(size =[15, 15, 2]);
+    // connecteurs
+    color([186/255,182/255,173/255]) translate([0, 9, 2.1]) cube(size = [15, 15, 13]);
+    color([186/255,182/255,173/255]) translate([85, 3, 2.1]) cube(size = [15, 15, 13]);
+    // connecteur antenne
+    color([240/255,170/255,7/255]){
+        translate([87, 22, 2.1]) cube(size = [12, 8, 10]);
+        translate([99, 26, 7]) rotate([0, 90, 0]) cylinder(h = 7, r1 = 3, r2 = 3);
+    }
+    //antenne
+    color([112/255,105/255,104/255]){
+        translate([106, 26, 7]) rotate([0, 90, 0]) cylinder(h = 31, r1 = 0.5, r2 = 0.5);
+        difference(){
+            translate([137, 3.5, 7]) cube(size= [17, 45, 1]);
+            union(){
+                translate([141, 7.5, 7]) cube(size = [10, 13.5, 30]);
+                translate([141, 31, 7]) cube(size = [10, 13.5, 30]);
+            }
+        }
+        translate([129, 22, 3.5]) cube(size= [15, 8, 8]);
     }
 }
 
