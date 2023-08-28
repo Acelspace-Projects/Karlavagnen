@@ -15,11 +15,9 @@ union(){
         cylinder(h=LR+2, d1=d_ext-6, d2=81);
     };
     translate([0,0,LR]) 
-    difference(){
-        cylinder(h=5, d=87);
-        translate([0,0,-2])
-        cylinder(h=9, d=83);
-    };
+    bague_creuse(87,83,5);
+    translate([0,0,-50]) 
+    bague_creuse(96,84,55);
 }
 
 // dome

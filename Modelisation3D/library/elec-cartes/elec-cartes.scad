@@ -113,7 +113,6 @@ module arduino_nano(){
 // <img src="https://raw.githubusercontent.com/Acelspace-Projects/Acelspace/main/OpenSCAD/library/elec-cartes/cats_vega.png">
 
 module cats_vega(){
-            //module CATS
     // platine noire
     color([25/255,20/255,54/255]) translate([0, 0, 0]) cube(size = [100, 33, 2.1]);
     color([142/255,141/255,145/255]) translate([60, 4, 2.1]) cube(size =[15, 15, 2]);

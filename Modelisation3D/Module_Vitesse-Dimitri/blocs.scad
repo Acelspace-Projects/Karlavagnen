@@ -21,8 +21,8 @@ difference(){
 
 }}}
 module blocs(){
-translate([50,0,0]) rotate([0,0,0]) bloc_vitesse(0);
-translate([0,50,0]) rotate([0,0,90]) bloc_vitesse(1);
+translate([50-3,0,0]) rotate([0,0,0]) bloc_vitesse(0);
+translate([0,50-3,0]) rotate([0,0,90]) bloc_vitesse(1);
 rotate([0,180,0]){translate([0,70,-150]){
 color([1,1,1,0.5])cylinder(100,2,2);
 translate([0,0,100]){
@@ -34,7 +34,7 @@ translate([-22.5,0,25]) rotate([0,90,0]) cylinder(45,4,4);
 translate([0,22.5,75]) rotate([90,0,0]) cylinder(39,4,4);
 }
 }}
-translate([-50,0,0]) rotate([0,0,180]) bloc_vitesse(0);
-translate([0,-50,0]) rotate([0,0,-90]) bloc_vitesse(1);
+translate([-50+3,0,0]) rotate([0,0,180]) bloc_vitesse(0);
+translate([0,-50+3,0]) rotate([0,0,-90]) bloc_vitesse(1);
 }
 //translate([-0,0,-1500]) cylinder(2000,50,50); //gabarit de tube

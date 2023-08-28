@@ -8,7 +8,6 @@ use <../Ogive-Dimitri/ogive.scad>
 use <../Camera-Clement/camera.scad>
 use <../Tensionometre-Etienne/tensionometre.scad>
 use <../Module_Vitesse-Dimitri/vitesse.scad>
-use <../Module_Vitesse-Dimitri/blocs.scad>
 use <../Minuterie-Alexandre/minuterie.scad>
 use <../Mini_Ailerons-ClementL/roulis.scad>
 
@@ -26,17 +25,10 @@ bloc_camera(d_int);
 translate([0,0,l_tube])
 ogiveK(d_ext);
 
-/*Module Vitesse*/
-translate([0,0,1800])
+/*Module vitesse*/
+translate([0,0,l_tube-216])
 vitesse();
 
-/*Roulis*/
-// translate([0,0,1600]) 
-// roulis(d_int);
-
-/*Blocs vitesse*/
-translate([0,0,l_tube-400])
-bloc_vitesse();
 
 /*Trappe*/
 translate([0,0,1000]) 
@@ -44,12 +36,13 @@ color("red")
 cylinder(h=500,d=d_int);
 
 
+/*Bloc Minuterie*/
 translate([0,0,500]) {
     /*Minuterie*/
     minuterie(d_int);
     /*Tensionometre*/
     scale([0.5,0.5,1]) 
-    translate([-50,0,10]) 
+    translate([-50,0,130]) 
     tensionometre();
 }
 
