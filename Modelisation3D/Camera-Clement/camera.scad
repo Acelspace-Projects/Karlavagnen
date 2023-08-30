@@ -37,14 +37,15 @@ difference(){
     cylinder(h=12,d=10);
 };
 
-// servo-moteurs
-color([50/255,50/255,255/255]) {
-    translate([0,-7,8.5-28])
-    cube([8, 19, 17],true);
-    translate([23/2+10,0,17/2+5])
-    rotate([0,0,90]) 
-    cube([8, 19, 17],true);
-}
+// servo-moteur
+color([50/255,50/255,255/255])
+translate([0,-7,8.5-28])
+cube([8, 19, 17],true);
+// color([50/255,50/255,255/255])
+// translate([23/2+10,0,17/2+5])
+// rotate([0,0,90]) 
+// cube([8, 19, 17],true);
+
 
 // axe
 translate([0, 0, -11])
@@ -60,6 +61,11 @@ union() {
     translate([-23/2-5,-10/2,4])
     cube([33,10,5]);
 }
+
+// ventilo
+color([0.1,0.1,0.1]) 
+translate([0,0,11]) 
+cube([20,20,4],true);
 
 // caméra
 translate([0,0,15]) {
